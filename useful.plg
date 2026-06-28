@@ -1,0 +1,58 @@
+<?xml version='1.0' standalone='yes'?>
+
+<!DOCTYPE PLUGIN [
+  <!ENTITY name      "useful">
+  <!ENTITY author    "bluepantsdev">
+  <!ENTITY version   "2026.06.28">
+  <!ENTITY launch    "Settings/useful">
+  <!ENTITY pluginURL "https://raw.githubusercontent.com/bluepantsdev/unraid_plugin_useful/main/useful.plg">
+  <!ENTITY pkgURL    "https://github.com/bluepantsdev/unraid_plugin_useful/releases/download/&version;/useful.txz">
+  <!ENTITY pkgSHA256 "b49125f7dc5bf994a7d821755cbc1f6b32cab7d4d3ece70ce4dc6bdc4e271b37">
+]>
+
+<PLUGIN name="&name;"
+        author="&author;"
+        version="&version;"
+        launch="&launch;"
+        pluginURL="&pluginURL;"
+        support="https://github.com/bluepantsdev/unraid_plugin_useful"
+        min="6.9.0">
+
+<CHANGES>
+##&version;
+- Initial release
+</CHANGES>
+
+<!--
+  Install the plugin package
+-->
+<FILE Name="/boot/config/plugins/&name;/&name;.txz" Run="upgradepkg --install-new">
+<URL>&pkgURL;</URL>
+<SHA256>b49125f7dc5bf994a7d821755cbc1f6b32cab7d4d3ece70ce4dc6bdc4e271b37</SHA256>
+</FILE>
+
+<!--
+  Post-install: ensure config dir exists, set permissions
+-->
+<FILE Run="/bin/bash">
+<INLINE>
+# Create persistent config directory if missing
+mkdir -p /boot/config/plugins/&name;
+
+echo "Plugin &name; v&version; installed."
+</INLINE>
+</FILE>
+
+<!--
+  Remove: clean up RAM-resident files (persistent /boot files stay unless user deletes)
+-->
+<FILE Run="/bin/bash" Method="remove">
+<INLINE>
+# Remove plugin files from RAM disk
+rm -rf /usr/local/emhttp/plugins/&name;
+
+echo "Plugin &name; removed."
+</INLINE>
+</FILE>
+
+</PLUGIN>
