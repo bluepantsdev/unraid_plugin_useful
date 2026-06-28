@@ -7,7 +7,7 @@
   <!ENTITY launch    "Settings/useful">
   <!ENTITY pluginURL "https://raw.githubusercontent.com/bluepantsdev/unraid_plugin_useful/main/useful.plg">
   <!ENTITY pkgURL    "https://github.com/bluepantsdev/unraid_plugin_useful/releases/download/&version;/useful.txz">
-  <!ENTITY pkgSHA256 "b49125f7dc5bf994a7d821755cbc1f6b32cab7d4d3ece70ce4dc6bdc4e271b37">
+  <!ENTITY pkgSHA256 "250abbffa9bf6592906b8d14b1d108c142880f831764b1b465027e6e16772991">
 ]>
 
 <PLUGIN name="&name;"
@@ -28,7 +28,7 @@
 -->
 <FILE Name="/boot/config/plugins/&name;/&name;.txz" Run="upgradepkg --install-new">
 <URL>&pkgURL;</URL>
-<SHA256>b49125f7dc5bf994a7d821755cbc1f6b32cab7d4d3ece70ce4dc6bdc4e271b37</SHA256>
+<SHA256>250abbffa9bf6592906b8d14b1d108c142880f831764b1b465027e6e16772991</SHA256>
 </FILE>
 
 <!--
